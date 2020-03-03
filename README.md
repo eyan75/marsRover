@@ -2,9 +2,17 @@
 
 Hello and thanks for looking at the code.
 
+To clone this project, run
+
+`git clone https://github.com/eyan75/marsRover.git`
+
 This project was built using gradle (v.6.2.1). If you do not have gradle, you can find instructions to install it here:
 
 https://gradle.org/install/
+
+To build the program, run
+
+`gradle clean build`
 
 To run the program, run
 
