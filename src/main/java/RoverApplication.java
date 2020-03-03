@@ -7,17 +7,24 @@ import service.RoverService;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class RoverApplication {
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         ClassLoader classLoader = RoverApplication.class.getClassLoader();
         String inputFile;
         if (args == null || args.length == 0) {
-            inputFile = classLoader.getResource("input.txt").getFile();
+            URL resource = classLoader.getResource("input.txt");
+            if(resource != null) {
+                inputFile = resource.getFile();
+            } else {
+                System.out.println("input.txt could not be loaded");
+                return;
+            }
         } else {
             inputFile = args[0];
         }
@@ -32,7 +39,6 @@ public class RoverApplication {
             processInput(inputLines);
         } catch (FileNotFoundException e) {
             System.out.println("File not found: " + inputFile);
-            return;
         }
     }
 
@@ -86,9 +92,9 @@ public class RoverApplication {
             return null;
         }
 
-        int xCoordinate = 0;
-        int yCoordinate = 0;
-        Direction direction = null;
+        int xCoordinate;
+        int yCoordinate;
+        Direction direction;
         try {
             xCoordinate = Integer.parseInt(parts[0]);
             yCoordinate = Integer.parseInt(parts[1]);

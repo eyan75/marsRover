@@ -2,7 +2,7 @@
 
 Hello and thanks for looking at the code.
 
-This project was built using gradle. If you do not have gradle, you can find insturctions to install it here:
+This project was built using gradle (v.6.2.1). If you do not have gradle, you can find instructions to install it here:
 
 https://gradle.org/install/
 
@@ -17,7 +17,13 @@ To run the test suite, run
 This project can be imported into most IDEs by importing the `build.gradle` file.
 
 This application takes input from the file in src/main/resources/input.txt. For testing purposes, I have also allowed it to 
-take a file as the first argument.
+take an input file as the first argument.
+
+If you do not have gradle, you can also run the application by running these commands from the root directory, but I would not
+recommend this over the over options. 
+
+`javac -d . -cp src/main/java src/main/java/RoverApplication.java`
+`java -cp src/main/java RoverApplication <path_to_input_file>`
 
 ## Design decisions
 
