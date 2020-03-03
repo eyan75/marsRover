@@ -52,12 +52,14 @@ public class RoverApplication {
         if(plateau == null) {
             return;
         }
+
         RoverService service = new RoverService(plateau);
         for (int i = 1; i < inputLines.size(); i += 2) {
             Rover rover = getRover(inputLines.get(i));
             if(rover == null) {
                 return;
             }
+
             String command = inputLines.get(i + 1);
             try {
                 service.processInstructions(rover, command);
@@ -65,10 +67,16 @@ public class RoverApplication {
                 System.out.println(e.getMessage());
                 return;
             }
+
+            // Output results
             System.out.println(String.format("%s %s %s", rover.getXCoordinate(), rover.getYCoordinate(), rover.getHeading()));
         }
     }
 
+    /*
+     * Given an input string of format 'X Y' this method returns a Plateau of width x and height y.
+     * If the input is invalid, a message is printed and null is returned
+     */
     private static Plateau getPlateau(String input) {
         String[] parts = input.split(" ");
         if (parts.length != 2) {
@@ -82,9 +90,14 @@ public class RoverApplication {
             System.out.println(String.format("Invalid plateau dimensions: %s %s", width, height));
             return null;
         }
+
         return new Plateau(width, height);
     }
 
+    /*
+     * Given an input string of format 'X Y D' this method returns a Rover at position (X,Y) facing in direction D.
+     * If the input is invalid, a message is printed and null is returned
+     */
     private static Rover getRover(String input) {
         String[] parts = input.split(" ");
         if (parts.length != 3) {
@@ -106,6 +119,7 @@ public class RoverApplication {
             System.out.println("Invalid rover direction: " + parts[2]);
             return null;
         }
+
         return new Rover(xCoordinate, yCoordinate, direction);
     }
 }

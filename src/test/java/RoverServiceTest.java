@@ -164,6 +164,19 @@ public class RoverServiceTest {
         assertEquals(Direction.N, rover.getHeading());
     }
 
+    @Test
+    public void staysOnMapKeepsMoving() {
+        Rover rover = new Rover(4, 4, Direction.N);
+        Plateau plateau = new Plateau(5, 5);
+        RoverService roverService = new RoverService(plateau);
+
+        String instructions = "MMMLMM";
+        roverService.processInstructions(rover, instructions);
+        assertEquals(2, rover.getXCoordinate());
+        assertEquals(5, rover.getYCoordinate());
+        assertEquals(Direction.W, rover.getHeading());
+    }
+
     @Test(expected = IllegalPositionException.class)
     public void badStartingPosition() {
         Rover rover = new Rover(7, 1, Direction.N);

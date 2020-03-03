@@ -13,6 +13,10 @@ public class RoverService {
         this.plateau = plateau;
     }
 
+    /*
+     * Process the instructions given to a specific rover.
+     * Throws an IllegalCommandException if we encounter an invalid instruction
+     */
     public void processInstructions(Rover rover, String instructions) {
         if(rover.getXCoordinate() > plateau.getWidth() || rover.getYCoordinate() > plateau.getHeight()) {
             throw new IllegalPositionException(rover.getXCoordinate(), rover.getYCoordinate());
@@ -38,6 +42,10 @@ public class RoverService {
         }
     }
 
+    /*
+     * Move the rover in the direction it is facing. If the movement would cause the rover to fall off the plateau,
+     * ignore the instruction
+     */
     private void moveRover(Rover rover) {
         switch (rover.getHeading()) {
             case N:
