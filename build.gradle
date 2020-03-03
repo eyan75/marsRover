@@ -1,11 +1,17 @@
 plugins {
     id 'java'
+    id 'application'
 }
 
 group 'com.assignment'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
+
+
+application {
+    mainClassName = 'RoverApplication'
+}
 
 repositories {
     mavenCentral()
